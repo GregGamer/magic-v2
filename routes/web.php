@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\DeckController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +28,12 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::view('about', 'about')->name('about')->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('card', CardController::class);
+    Route::resource('deck', DeckController::class);
+    Route::resource('collection', CollectionController::class);
+    Route::resource('archive', ArchiveController::class);
+
+    Route::view('/settings', 'user.settings')->name('user.settings');
+});

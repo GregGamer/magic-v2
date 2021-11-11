@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Lavary\Menu\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Menu' => Lavary\Menu\Facades::class,
     ],
 
 ];
