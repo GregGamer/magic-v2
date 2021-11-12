@@ -15,6 +15,10 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_foil');
+            $table->foreignId('printing_id');
+            $table->foreignId('archive_id');
+            $table->foreignId('deck_id')->nullable();
             $table->timestamps();
         });
     }

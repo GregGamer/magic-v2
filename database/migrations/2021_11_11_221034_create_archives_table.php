@@ -15,6 +15,12 @@ class CreateArchivesTable extends Migration
     {
         Schema::create('archives', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('short_description');
+            $table->text('description');
+            $table->boolean('is_folder');
+            $table->integer('cards_in_slot');
+            $table->foreignId('collection_id');
             $table->timestamps();
         });
     }

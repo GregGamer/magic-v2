@@ -15,6 +15,9 @@ class CreateDecksTable extends Migration
     {
         Schema::create('decks', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('user_id');
+            $table->foreignId('format_id');
             $table->timestamps();
         });
     }
