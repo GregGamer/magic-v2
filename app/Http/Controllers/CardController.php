@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -13,7 +14,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        //
+        return view('cards.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        return view('cards.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('card.index')->with('SUCCESS', 'Card got stored');
     }
 
     /**
@@ -43,9 +44,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Card $card)
     {
-        //
+        return view('cards.show');
     }
 
     /**
@@ -54,9 +55,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Card $card)
     {
-        //
+        return view('cards.edit');
     }
 
     /**
@@ -66,9 +67,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Card $card)
     {
-        //
+        return redirect()->route('card.index')->with('SUCCESS', 'Card got updated');
     }
 
     /**
@@ -77,8 +78,9 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Card $card)
     {
-        //
+        $card->delete();
+        return redirect()->route('card.index')->with('SUCCESS', 'Card got deleted');
     }
 }

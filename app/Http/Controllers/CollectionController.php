@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
@@ -13,7 +14,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        return view('collections.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('collections.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('collection.index')->with('SUCCESS', 'Collection got stored');
     }
 
     /**
@@ -43,9 +44,9 @@ class CollectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Collection $collection)
     {
-        //
+        return view('collections.show');
     }
 
     /**
@@ -54,9 +55,9 @@ class CollectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Collection $collection)
     {
-        //
+        return view('collections.edit');
     }
 
     /**
@@ -66,9 +67,9 @@ class CollectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Collection $collection)
     {
-        //
+        return redirect()->route('collection.index')->with('SUCCESS', 'Collection got updated');
     }
 
     /**
@@ -77,8 +78,9 @@ class CollectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Collection $collection)
     {
-        //
+        $collection->delete();
+        return redirect()->route('collection.index')->with('SUCCESS', 'Collection got deleted');
     }
 }

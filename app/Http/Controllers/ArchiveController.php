@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archive;
 use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
@@ -13,7 +14,7 @@ class ArchiveController extends Controller
      */
     public function index()
     {
-        //
+        return view('archives.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ArchiveController extends Controller
      */
     public function create()
     {
-        //
+        return view('archives.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class ArchiveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('archive.index')->with('SUCCESS', 'Archive got stored');
     }
 
     /**
@@ -43,9 +44,9 @@ class ArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Archive $archive)
     {
-        //
+        return view('archives.show');
     }
 
     /**
@@ -54,9 +55,9 @@ class ArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Archive $archive)
     {
-        //
+        return view('archives.edit');
     }
 
     /**
@@ -66,9 +67,9 @@ class ArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Archive $archive)
     {
-        //
+        return redirect()->route('archive.index')->with('SUCCESS', 'Archive got updated');
     }
 
     /**
@@ -77,8 +78,9 @@ class ArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Archive $archive)
     {
-        //
+        $archive->delete();
+        return redirect()->route('archive.index')->with('SUCCESS', 'Archive got deleted');
     }
 }

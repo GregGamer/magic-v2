@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deck;
 use Illuminate\Http\Request;
 
 class DeckController extends Controller
@@ -13,7 +14,7 @@ class DeckController extends Controller
      */
     public function index()
     {
-        //
+        return view('decks.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class DeckController extends Controller
      */
     public function create()
     {
-        //
+        return view('decks.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class DeckController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('deck.index')->with('SUCCESS', 'Deck got stored');
     }
 
     /**
@@ -43,9 +44,9 @@ class DeckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Deck $deck)
     {
-        //
+        return view('decks.show');
     }
 
     /**
@@ -54,9 +55,9 @@ class DeckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Deck $deck)
     {
-        //
+        return view('decks.edit');
     }
 
     /**
@@ -66,9 +67,9 @@ class DeckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Deck $deck)
     {
-        //
+        return redirect()->route('deck.index')->with('SUCCESS', 'Deck got updated');
     }
 
     /**
@@ -77,8 +78,9 @@ class DeckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Deck $deck)
     {
-        //
+        $deck->delete();
+        return redirect()->route('deck.index')->with('SUCCESS', 'Deck got deleted');
     }
 }
