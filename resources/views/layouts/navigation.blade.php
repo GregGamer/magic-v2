@@ -2,7 +2,7 @@
      class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
 
 <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
-     class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+     class="flex flex-col fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
     <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
             <svg class="h-12 w-12" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,23 +19,25 @@
     </div>
 
     <nav class="mt-10">
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            <x-slot name="icon">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
-                </svg>
-            </x-slot>
-            {{ __('Dashboard') }}
-        </x-nav-link>
-
-        <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
-            <x-slot name="icon">
-                <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-                </svg>
-            </x-slot>
-            {{ __('About us') }}
-        </x-nav-link>
+        @foreach ($MENU_sidebar->items as $item)
+            <x-nav-link href="{{ route($item->link->path['route']) }}" :active="$item->isActive">
+                <x-slot name="icon">
+                    <span class="material-icons-outlined">{{$item->data['icon']}}</span>
+                </x-slot>
+                {{ __($item->title) }}
+            </x-nav-link>
+        @endforeach
     </nav>
+    <div class="flex-grow"></div>
+    <nav class="my-7">
+        @foreach ($MENU_footer->items as $item)
+            <x-nav-link href="{{ route($item->link->path['route']) }}" :active="$item->isActive">
+                <x-slot name="icon">
+                    <span class="material-icons-outlined">{{$item->data['icon']}}</span>
+                </x-slot>
+                {{ __($item->title) }}
+            </x-nav-link>
+        @endforeach
+    </nav>
+
 </div>
