@@ -13,6 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        @livewireStyles
+        @powerGridStyles
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -35,5 +37,8 @@
                 </main>
             </div>
         </div>
+
+        @livewireScripts
+        @powerGridScripts
     </body>
 </html>
