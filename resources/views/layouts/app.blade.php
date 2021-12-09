@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         @livewireStyles
         @powerGridStyles
+        @fcStyles
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -40,5 +41,6 @@
 
         @livewireScripts
         @powerGridScripts
+        @fcScripts
     </body>
 </html>

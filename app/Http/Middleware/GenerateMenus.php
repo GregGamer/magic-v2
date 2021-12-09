@@ -23,13 +23,13 @@ class GenerateMenus
 
         \Menu::make('MENU_sidebar', function($menu){
             $menu->add('Dashboard', ['route'=>'dashboard'])->data('icon', 'dashboard');
-            $menu->add('Cards', ['route' => 'card.index'])->data('icon','auto_awesome_motion');
-            $menu->add('Decks', ['route' => 'deck.index'])->data('icon','filter_1');
+            $menu->add('Decks', ['route' => 'deck.index'])->data('icon','filter_9');
             $menu->add('Collections', ['route' => 'collection.index'])->data('icon','store');
         });
 
         \Menu::make('MENU_footer', function($menu){
             $menu->add('Settings', ['route' => 'user.settings'])->data('icon','settings');
+            $menu->add('Log out', ['route' => 'user.settings'])->data('icon','logout');
         });
 
         return $next($request);
