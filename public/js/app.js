@@ -2396,9 +2396,8 @@ function getStores() {
 
 // packages/alpinejs/src/clone.js
 var isCloning = false;
-function skipDuringClone(callback, fallback = () => {
-}) {
-  return (...args) => isCloning ? fallback(...args) : callback(...args);
+function skipDuringClone(callback) {
+  return (...args) => isCloning || callback(...args);
 }
 function clone(oldEl, newEl) {
   newEl._x_dataStack = oldEl._x_dataStack;
@@ -2465,11 +2464,10 @@ var Alpine = {
   get raw() {
     return raw;
   },
-  version: "3.5.1",
+  version: "3.5.0",
   flushAndStopDeferringMutations,
   disableEffectScheduling,
   setReactivityEngine,
-  skipDuringClone,
   addRootSelector,
   deferMutations,
   mapAttributes,
@@ -22599,7 +22597,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   \*******************************/
 /***/ (() => {
 
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nTypeError: require(...) is not a function\n    at Object.<anonymous> (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\tailwind.config.js:26:38)\n    at Module._compile (node:internal/modules/cjs/loader:1101:14)\n    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:822:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:94:18)\n    at C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\tailwindcss\\lib\\index.js:83:107\n    at tailwindcss (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\tailwindcss\\lib\\index.js:96:36)\n    at Processor.normalize (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\postcss\\lib\\processor.js:43:13)\n    at processResult (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\webpack\\lib\\NormalModule.js:751:19)\n    at C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\webpack\\lib\\NormalModule.js:853:5\n    at C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\gregor.wagner\\Documents\\Code\\magic-v2\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nTypeError: require(...) is not a function\n    at Object.<anonymous> (/home/gregorw/Dokumente/code/web/magic-v2/tailwind.config.js:26:38)\n    at Module._compile (node:internal/modules/cjs/loader:1101:14)\n    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)\n    at Module.load (node:internal/modules/cjs/loader:981:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:822:12)\n    at Module.require (node:internal/modules/cjs/loader:1005:19)\n    at require (node:internal/modules/cjs/helpers:102:18)\n    at /home/gregorw/Dokumente/code/web/magic-v2/node_modules/tailwindcss/lib/index.js:83:107\n    at tailwindcss (/home/gregorw/Dokumente/code/web/magic-v2/node_modules/tailwindcss/lib/index.js:96:36)\n    at Processor.normalize (/home/gregorw/Dokumente/code/web/magic-v2/node_modules/postcss/lib/processor.js:43:13)\n    at processResult (/home/gregorw/Dokumente/code/web/magic-v2/node_modules/webpack/lib/NormalModule.js:751:19)\n    at /home/gregorw/Dokumente/code/web/magic-v2/node_modules/webpack/lib/NormalModule.js:853:5\n    at /home/gregorw/Dokumente/code/web/magic-v2/node_modules/loader-runner/lib/LoaderRunner.js:399:11\n    at /home/gregorw/Dokumente/code/web/magic-v2/node_modules/loader-runner/lib/LoaderRunner.js:251:18\n    at context.callback (/home/gregorw/Dokumente/code/web/magic-v2/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/home/gregorw/Dokumente/code/web/magic-v2/node_modules/postcss-loader/dist/index.js:142:7)");
 
 /***/ }),
 
